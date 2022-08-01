@@ -1,0 +1,24 @@
+// Success
+200: OK / Success: Request đã được tiếp nhận và xử lý thành công
+201: Created: Request được chấp nhận cho xử lý, nhưng việc xử lý chưa hoàn thành
+204: No Content: Server đã xử lý thành công request nhưng không trả về bất cứ content nào
+
+// Redirect
+301: Moved Permanently: Request hiện tại và các request sau được yêu cầu di chuyển tới một URI mới
+302: Found: 
+
+// Client Error
+400: Bad Request: Lỗi giao thức khi gửi request
+401: Unauthorized: Chưa đăng nhập nên bị lỗi
+402: Payment Required: Hiện tại mã này chưa được sử dụng và nó được dự trữ cho tương lai
+403: Forbidden:  Token chưa đủ quyền truy cập
+404: Not Found: Lỗi truy vấn khi trình duyệt giao tiếp với máy chủ
+409: Conflict: Request không thể được hoàn thành bởi vì sự xung đột
+412: Precondition Failed: Server sẽ không đáp ứng một trong những điều kiện tiên quyết của Client trong Request
+
+// Server Error
+500: Internal Server Error: Một thông báo chung chung, được đưa ra khi Server gặp phải một trường hợp bất ngờ
+501: Not Implemented: Server không công nhận các Request method hoặc không có khả năng xử lý nó
+502: Bad Gateway: Server đã hoạt động như một gateway hoặc proxy và nhận được một Response không hợp lệ từ máy chủ nguồn
+503: Service Unavailable: Server hiện tại không có sẵn (Quá tải hoặc được down để bảo trì), nói chung đây chỉ là trạng thái tạm thời
+

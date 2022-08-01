@@ -1,0 +1,106 @@
+CACH UPLOAD DU AN TAI MAY TINH LEN WEB GITHUB
+
+	git config --global user.name "username"
+	git config --global user.email "email"
+	git clone <paste link du an tren web github>
+
+SAU DO TREN MAY TINH SE SINH RA 1 FOLDER CHUA CAC FILE GIONG NHU TREN GITHUB
+
+SAU DO COPY TOAN BO FOLDER DU AN TREN MAY TINH VAO FOLDER WEB VA CLICK CHUOT PHAI CHON GIT BASH HERE DE MO GIT TAI DAY
+
+	git status 		(dung de kiem tra trang thai cua cac file trong folder web) => luc nay cac folder (hoac file) trong folder nay se hien thi mau do (cau lenh nay co the khong can su dung cung khong sao)
+	git add . 		(dung de xac nhan nhung folder va file nao can upload tu folder web len web github) 
+		  	 	=> dau . mang y nghia la tat ca folder web se upload len web github, con neu muon chon rieng 1 folder(hoac file) cu the thi thay . = ten folder(hoac ten file) can up load
+	git status 		(dung de kiem tra trang thai cua cac folder duoc chon de upload len web github) => luc nay nhung folder duoc chon se hien thi mau xanh la cay (cau lenh nay co the khong can su dung cung khong sao)
+	git commit -m "..." 	(dung de biet nhung folder upload len la code nhung gi trong do)
+	git push origin main 	(hoac la master hoac 1 ten tu dat tuy vao setting) => luc nay du an se duoc upload tu may tinh len web github
+
+SAU KHI UPLOAD XONG TA CUNG CO THE SU DUNG LAI CAU LENH GIT STATUS DE KIEM TRA LAI
+
+cách upcode lên Github:
+	+	git checkout -b dev (master)
+	+	git add .
+	+	git commit -m '.....'
+	+	git push origin dev
+
+cách chạy project trên github:
+	+	git init
+	+	git add .
+	+	git commit -m '...'
+	+	git remote add origin https://github.com/lkh0103/react-hook-huylam.git ( coppy câu lệnh trên github)
+	+	git push origin master
+
+
+cách tạo mới (nhánh phụ 1) trong GitHub:
+	+	git branch (tên nhánh)				: để tạo ra nhánh mới sẽ nhận đc code từ nhánh main (master)
+	+ 	git branch 					: để kiểm tra lại nhánh ở hiện tại
+	+	git checkout (tên nhánh muốn chuyển)	: để chuyển nhánh mình muốn
+	+	git branch					: để kiểm tra nhánh mình muốn chuyển đúng chưa?
+	+	git status					: để kiểm tra lại code đang ở phân vùng nào
+	+ 	git add (cái file cần up code lên git)		: để up file nào cần lên lên git vs nhanh mà mình muốn up ( sau đó git status lại xem có màu xanh chưa có rồi là đã add thành công)
+	+	git commit -m "..."				: để tạo ghi chú cho file code up lên
+	+	git push origin (đg ở nhánh nào)		: để push code lên đúng nhánh ở hiện tại
+
+
+
+cách trộn code từ nhánh phụ lên nhánh chính:
+	+	chọn Compant & pull request --> chọn tiếp create pull request
+
+
+
+cách gởi code từ (nhánh phụ 1 hoặc 2,3...) lên nhánh chính (main/master)
+	+	git checkout (tên nhánh muốn chuyển)		: để chuyển nhánh
+	+	git status					: để biết màu đỏ là chưa add file lên
+	+	git add (tên file cần up lên nhánh chính)	: để add file lên
+	+	git status					: để biết màu xanh thì add file thành công
+	+	git commit -m ".."				: để tạo ghi chú cho file code up lên
+	+	git push origin (đg ở nhánh nào)		: để push code lên đúng nhanh ở hiện tại và sau đó [chọn Compant & pull request --> chọn tiếp create pull request] để chờ lead duyệt trộn code chung vs nhánh main/master
+
+	*	cách kéo code về từ Server Github xuống local (computer):
+
+		+	git checkout (nhánh main/master)			: để trở về lại nhánh main/master
+		+	git branch --set-upstream-to=origin/(branch) master 	: merge từ nhánh phụ vào nhánh chính
+		+	git pull						: để kéo code về từ Server Github xuống local (computer) update lại code ở nhánh chính main/master giống trên github
+
+
+
+cách giải quyết xung đột code sau khi trộn code ko đc từ nhánh phụ (nhánh đang bị xug đột code ko gửi code lên nhánh main/master đc --> nhánh chính:
+	+	đứng ở nhánh phụ (nhánh phụ 2) đang bị xung đột, do nhánh phụ 1 thường ko xung đột lần đầu gửi code lên
+	+	git merge (nhánh main/master)		: để trộn code nhánh phụ 2 vào nhánh master trên local
+	+	Accept current change 			: chọn code nhánh hiện tại (nhánh 2) trên local
+	+	Accept incorrning change		: chọn code nhánh 1 trên local
+	+	Accept Both changes			: chọn code cả 2 trên local
+	+	git status
+	+ 	git add (tên file trộn code)
+	+	git commit -m "..."
+	+	git push origin (nhánh phụ 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

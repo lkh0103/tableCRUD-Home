@@ -1,0 +1,36 @@
+Common Task 2: CRUD Module
+
+Mô tả: 
+Trong quá trình tương tác với các đối tượng dữ liệu ( không yêu cầu trải nghiệm người dùng cao thường dùng để admin quản trị dữ liệu), hành động được thực thi nhiều nhất là Create / Read / Update / Delete. [REST Rules]
+Việc viết code đi code lại các hành động tương tự nhau sẽ làm kích thước ứng dụng tăng lên đáng kể và làm cho quá trình sửa lỗi, kiểm thử, bảo trì ứng dụng tốn nhiều thời gian hơn vì phải chỉnh sửa code ở nhiều nơi. Do đó, chúng ta cần tạo ra 1 thư viện để xử lý trường hợp này.
+
+Yêu cầu:
+- Tự nghiên cứu và dựng mock data. Cấu trúc dữ liệu được gợi ý như sau: (chi tiết xem ở file đính kèm)
+- Sử dụng các kiến thức về hook và template ReactJs ở common task 1 để hoàn thành thư viện này.
+- Sử dụng Ant Design.
+
+- Thư viện phải handle cả 4 trường hợp CRUD.
+- Việc gọi api dữ liệu phải tuân theo nguyên tắc của RESTFUL API.
+
+- Với mỗi trang phải cho cấu hình hiển thị phần title của page.
+- Các sự kiện xảy ra trong thư viện, người dùng có thể hook được.
+
+- Trang: Hiển thị danh sách
++ Hiển thị các nội dung ở dạng table với header và body
++ Có hiển thị phân trang
++ Lựa chọn số dòng hiển thị
++ Có tìm kiếm
++ Nếu người dùng truy cập đường dẫn có các tham số thì phải hiển thị theo các tham số này. Ví dụ: search=x&page=1&limit=10
++ Cấu hình hiển thị nội dung cho header và từng dòng body. Nếu ko cấu hình hiển thị mặc định.
+
+- Trang: Tạo mới
++ Cho phép cấu hình form hiển thị, nếu không cấu hình phải hiển thị mặc định.
++ Báo cáo sự kiện khỏi tạo khi tạo thành công.
+
+- Trang: Cập nhật
++ Cho phép cấu hình form hiển thị, nếu không cấu hình phải hiển thị mặc định.
++ Lưu ý dữ liệu của form phải được khởi tạo dựa vào dữ liệu được lấy từ server xuống.
++ Báo cáo sự kiện cập nhật khi cập nhật thành công.
+
+- Lưu ý: Trước khi xóa phải hiển thị popup xác nhận.
+- Báo cáo sự kiện xóa khi xóa thành công.

@@ -1,0 +1,17 @@
+version: "3.7"
+    services:
+    frontend:
+        build:
+        context: .
+        container_name: frontend
+        ports:
+        - "3000:80" # map 80 in container => 3000 in local
+
+# version: "3.9"
+# services:
+#   web:
+#     build: .
+#     ports:
+#       - "8000:5000"
+#   redis:
+#     image: "redis:alpine"
