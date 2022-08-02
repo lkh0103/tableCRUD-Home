@@ -3,12 +3,22 @@ import CRUD from "../components/CRUD"
 import { listData } from "../components/CRUD/mock-data"
 import { Avatar, Image } from "antd"
 import { Link } from "react-router-dom"
+import { create, list } from "../libs/DataStore"
 
 export function DemoCRUDPage() {
     // demo
     const fetchList = (params: any) => {
-        return Promise.resolve(listData)
+        console.log('call', params)
+        const data = list(params)
+        return Promise.resolve(data)
     }
+
+    const createApi = (params: any) => {
+        const response = create(params)
+        return Promise.resolve(response)
+    }
+    //
+    //
 
     const columns: any = [
         {
@@ -46,12 +56,16 @@ export function DemoCRUDPage() {
             render: () => <Link to='/demo/update'>Edit</Link>
         }
     ]
-    
+
+    const schema = null
+
     return (
         <CRUD
             name="demo"
             fetchList={fetchList}
+            createAPI={createApi}
             columns={columns}
+            formSchema={schema}
         />
     )
 }

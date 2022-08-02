@@ -4,12 +4,11 @@ import FormCRUD from "../partials/Form/Form";
 import FormShema from "../partials/Form/FormSchema";
 import ModalList from "../partials/Modal";
 import Title from "../partials/Title";
+import Toast from "../partials/Toast";
 
 export default function CreatePage(schemaForm: any) {
-  const { data, title, showList } = useCRUD()
-  console.log('schemaForm', schemaForm);
+  const { data } = useCRUD()
 
-  useEffect(showList, [])
 
   return (
     <div>
@@ -19,9 +18,10 @@ export default function CreatePage(schemaForm: any) {
         <FormShema props={schemaForm.schemaForm} />
       ) : (
         <FormCRUD
-          title={title}
+          title={Object.keys(data[0])}
         />
       )}
+      <Toast />
     </div>
   );
 }

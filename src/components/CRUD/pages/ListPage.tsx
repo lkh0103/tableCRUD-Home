@@ -11,13 +11,6 @@ export default function ListPage() {
 
   useEffect(loadData, [params]);
 
-  // const onPageChange = (page: number) => {
-  //   setParams({
-  //     ...params,
-  //     page,
-  //   });
-  // };
-
   const handlePage = (e: any) => {
     setPage(e);
   };
@@ -45,7 +38,6 @@ export default function ListPage() {
 
   useEffect(() => {
     const abortController = new AbortController();
-
     async function getGitHubUser() {
       const response = await fetch(`https://api.github.com/users/${searchData}`, {
         signal: abortController.signal,
@@ -75,40 +67,6 @@ export default function ListPage() {
 
   return (
     <div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <input defaultValue={searchData ?? undefined} type="text" name="user" />
-          </label>
-          <button type="submit">Search</button>
-        </form>
-      </div>
-      {userData && (
-        <table className='container'>
-          <thead>
-            <tr>
-              <th>Name Search</th>
-              <th>Picture</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>
-                <h2>{userData.name}</h2>
-              </td>
-              <td>
-                <img
-                  style={{ borderRadius: "50%" }}
-                  width={50}
-                  height={50}
-                  src={userData.avatar_url}
-                  alt={userData.login} />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      )}
       <CRUDTable columns={columns} dataSource={dataTable} />
       {pagination.total > 0 && (
         <CURDPagiantion
@@ -118,7 +76,8 @@ export default function ListPage() {
           handlePage={handlePage}
         />
       )} <br /><br />
-      <div><Link to="/demo/create">Create</Link></div>
+      <div><Link to="/demo/create">Create</Link></div><br />
+      <div><Link to="/demo/id">Update</Link></div>
     </div>
   )
 }
