@@ -36,8 +36,9 @@ export default function FormCRUD(props: any) {
   const handleInput = (value: any) => {
     setForm(dataForm);
     toast('Success')
+    console.log(form);
   };
-  console.log(form);
+  
 
   const layout = {
     labelCol: { span: 3 },

@@ -1,7 +1,8 @@
 import React from 'react'
+import Search from 'antd/lib/input/Search'
 
-export default function Search() {
+export default function CRUDSearch(props: any) {
   return (
-    <div>Search</div>
+    <Search onSearch={(e) => props.onSearchUser(e)} />
   )
 }
