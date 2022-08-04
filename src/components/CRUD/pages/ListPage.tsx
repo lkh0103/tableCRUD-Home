@@ -11,8 +11,8 @@ export default function ListPage() {
 
   useEffect(loadData, [params]);
 
-  const onPageChange = (page: any) => {
-    setSearchParams({ searchPage: page })
+  const onPageChange = (page: number) => {
+    setSearchParams({ searchPage: String(page) })
     setParams({
       ...params,
       page,

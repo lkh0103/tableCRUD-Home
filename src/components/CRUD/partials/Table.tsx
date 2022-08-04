@@ -7,6 +7,8 @@ export function CRUDTable(props: any) {
       columns={props.columns}
       dataSource={props.dataSource}
       pagination={false}
+      onChange={(e) => console.log(e)}
+      rowKey='id'
     />
   )
 }

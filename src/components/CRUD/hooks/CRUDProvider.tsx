@@ -8,13 +8,13 @@ interface CRUDContext {
     list: any;
     getData: any;
     title: any;
-    showList: any;
     pagination: any;
     loadData: any;
     params: any;
     data: any;
-    create: any;
+    createData: any;
     setParams: any;
+    updateData: any;
 }
 
 export const CRUDContext = createContext<CRUDContext>({} as any);
@@ -24,7 +24,7 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
     const [data, setData] = useState<any>();
     const [params, setParams] = useState<any>({
         page: 1,
-        limit: 10,
+        limit: 4,
     });
     const [pagination, setPagination] = useState<any>({});
 
@@ -36,9 +36,20 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         return fetch(`/api/${props.name}`).then((result) => result.json())
     };
 
-    const create = () => {
+    const createData = (params: any) => {
         if (typeof props.createAPI === "function") {
             return props.createAPI(params);
+        }
+        // TODO self handler
+        return fetch(`/api/${props.name}`, {
+            method: 'POST',
+            body: JSON.stringify(params)
+        }).then((result) => result.json())
+    }
+
+    const updateData = (params: any) => {
+        if (typeof props.updateUser === "function") {
+            return props.updateUser(params);
         }
         // TODO self handler
         return fetch(`/api/${props.name}`, {
@@ -68,44 +79,19 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
         );
     };
 
-    const getTitle = () => {
-        {
-            data && setTitle(Object.keys(data[0]));
-        }
-    };
-
-    const showList = () => {
-        getTitle();
-    };
-
-    const createList = () => {
-        getData();
-    };
-
-    const updateList = () => {
-        getData();
-    };
-
-    const DeleteList = () => {
-        getData();
-    };
-
     const contextvalueCRUD = {
         list,
         title,
-        showList,
-        updateList,
-        DeleteList,
         getData,
-        createList,
         fetchList,
         loadData,
-        create,
-        setParams,
         pagination,
         data,
         params,
         columns: props.columns,
+        setParams,
+        createData,
+        updateData,
     };
 
     return (

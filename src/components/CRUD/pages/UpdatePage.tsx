@@ -1,21 +1,29 @@
 import React from 'react'
 import { useCRUD } from '../hooks/CRUDProvider'
 import FormCRUD from '../partials/Form/Form'
+import FormShema from '../partials/Form/FormSchema'
 import ModalCRUD from '../partials/Modal'
-import Title from '../partials/Title'
 import Toast from '../partials/Toast'
 
-export default function UpdatePage(value: any) {
+export default function UpdatePage(props: any) {
 
-  const { data, title } = useCRUD();
+  const { data, updateData } = useCRUD();
+
+  const updateDataUser = (dataInput: any) => {
+    updateData(dataInput);
+  };
+
+  console.log(props.dataEdit);
 
   return (
     <div>
-      <Title />
+      {/* <Title /> */}
       <FormCRUD
-        data={data} />
-      <Toast />
-      <ModalCRUD />
+        title={Object.keys(data[0])}
+        data={props.dataEdit.rows}
+        updateUser={updateDataUser}
+      />
+      {/* <Toast/> */}
     </div>
-  )
+  );
 }

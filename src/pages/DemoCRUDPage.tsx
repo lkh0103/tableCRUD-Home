@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import CRUD from "../components/CRUD"
 import { Avatar, Image } from "antd"
 import { Link } from "react-router-dom"
-import { create, list } from "../libs/DataStore"
+import { create, findId, list, update } from "../libs/DataStore"
 
 export function DemoCRUDPage() {
+
+    const [dataEdit, setDataEdit] = useState<any>();
     // demo
     const fetchList = (params: any) => {
         // console.log('call', params)
@@ -14,10 +16,22 @@ export function DemoCRUDPage() {
 
     const createApi = (params: any) => {
         const response = create(params)
+        console.log(response);
         return Promise.resolve(response)
     }
 
+    const updateApi = (params: any) => {
+        const resUpdateApi = update(params)
+        console.log(resUpdateApi)
+        return Promise.resolve(resUpdateApi)
+    }
+
     const columns: any = [
+        {
+            title: 'id',
+            dataIndex: 'id',
+            key: 'id'
+        },
         {
             title: 'username',
             dataIndex: 'username',
@@ -38,19 +52,25 @@ export function DemoCRUDPage() {
             dataIndex: 'avatar',
             key: 'avatar',
             render: (value: any, record: any) => {
-                return <Avatar src={value} />
+                return <Image src={value} />
             }
         },
         {
             title: 'Action',
             dataIndex: 'name',
             key: 'name',
-            // render: (value: any, record: any) => {
-            //     return <Avatar src={value} />
-            // }
-            render: () => <Link to='/demo/update'>Edit</Link>
+            render: (value: any, index: number) =>
+                <Link to={'/demo/update'}
+                    onClick={() => handleEdit(value)}>Edit
+                </Link>
         }
-    ]
+    ];
+
+    const handleEdit = (data: any) => {
+        const response = findId(data.id);
+        setDataEdit(response);
+        return Promise.resolve(response);
+    };
 
     const schema = null
 
@@ -58,8 +78,10 @@ export function DemoCRUDPage() {
         <CRUD
             name="demo"
             fetchList={fetchList}
-            createAPI={createApi}
             columns={columns}
+            createAPI={createApi}
+            updateUser={updateApi}
+            dataEdit={dataEdit}
             formSchema={schema}
         />
     )
