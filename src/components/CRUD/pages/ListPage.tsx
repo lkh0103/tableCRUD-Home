@@ -1,3 +1,4 @@
+import { Button } from 'antd'
 import React, { useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useCRUD } from '../hooks/CRUDProvider'
@@ -31,6 +32,9 @@ export default function ListPage() {
 
   return (
     <div>
+      <Button style={{ float: 'right' }}>
+        <Link to="/demo/create">Create User</Link>
+      </Button><br /><br /><br />
       <CRUDSearch onSearchUser={onSearch} />
       <CRUDTable columns={columns} dataSource={data} />
       {pagination.total > 0 && (
@@ -40,9 +44,7 @@ export default function ListPage() {
           pageSize={pagination.total / pagination.totalPages}
           onPageChange={onPageChange}
         />
-      )} <br /><br />
-      <div><Link to="/demo/create">Create</Link></div><br />
-      <div><Link to="/demo/id">Update</Link></div>
+      )}
     </div>
   )
 }

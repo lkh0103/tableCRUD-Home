@@ -4,11 +4,7 @@ import CRUDProvider from './hooks/CRUDProvider'
 import CreatePage from './pages/CreatePage'
 import ListPage from './pages/ListPage'
 import UpdatePage from './pages/UpdatePage'
-/*
-list page: /
-create page: /create
-update page: /:id
-*/
+
 type FetchListParams = {
     limit: number
     page: number
@@ -24,20 +20,18 @@ interface ListResult {
 }
 
 export type FetchList = (params: Partial<FetchListParams>) => Promise<ListResult>
-
 export interface CRUDProps {
     name: string
     fetchList?: FetchList
     createAPI: (params: any) => any
     updateUser: (params: any) => any
+    removeUser: (id: string) => any
     columns: any[]
     formSchema: any
     dataEdit: any
 }
-
 export default function CRUD(props: CRUDProps) {
     const params = useParams()
-
     const renderContent = useCallback(() => {
         switch (params.id) {
             case 'create':
@@ -45,7 +39,7 @@ export default function CRUD(props: CRUDProps) {
             case undefined:
                 return <ListPage />
             default:
-                return <UpdatePage dataEdit={props.dataEdit}/>
+                return <UpdatePage dataEdit={props.dataEdit} />
         }
     }, [params.id])
 
@@ -56,3 +50,9 @@ export default function CRUD(props: CRUDProps) {
         </CRUDProvider>
     )
 }
+
+/*
+list page: /
+create page: /create
+update page: /:id
+*/

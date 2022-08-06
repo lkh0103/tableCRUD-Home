@@ -9,9 +9,7 @@ export default function CreatePage(props: any) {
   const { data, createData } = useCRUD()
 
   const getReturnCreatAPI = (value: any) => {
-    if (value) {
-      createData(value)
-    }
+    createData(value)
   };
 
   return (

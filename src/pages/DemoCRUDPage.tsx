@@ -2,10 +2,9 @@ import React, { useState } from "react"
 import CRUD from "../components/CRUD"
 import { Avatar, Image } from "antd"
 import { Link } from "react-router-dom"
-import { create, findId, list, update } from "../libs/DataStore"
+import { create, findId, list, remove, update } from "../libs/DataStore"
 
 export function DemoCRUDPage() {
-
     const [dataEdit, setDataEdit] = useState<any>();
     // demo
     const fetchList = (params: any) => {
@@ -26,6 +25,12 @@ export function DemoCRUDPage() {
         return Promise.resolve(resUpdateApi)
     }
 
+    const removeApi = (id: string) => {
+        const delApi = remove(id)
+        console.log(delApi);
+        return Promise.resolve(delApi)
+    }
+
     const columns: any = [
         {
             title: 'id',
@@ -35,6 +40,7 @@ export function DemoCRUDPage() {
         {
             title: 'username',
             dataIndex: 'username',
+            width: '8%',
             key: 'id'
         },
         {
@@ -57,13 +63,13 @@ export function DemoCRUDPage() {
         },
         {
             title: 'Action',
-            dataIndex: 'name',
-            key: 'name',
-            render: (value: any, index: number) =>
+            width: '8%',
+            render: (value: any, index: number) => (
                 <Link to={'/demo/update'}
                     onClick={() => handleEdit(value)}>Edit
                 </Link>
-        }
+            )
+        },
     ];
 
     const handleEdit = (data: any) => {
@@ -81,6 +87,7 @@ export function DemoCRUDPage() {
             columns={columns}
             createAPI={createApi}
             updateUser={updateApi}
+            removeUser={removeApi}
             dataEdit={dataEdit}
             formSchema={schema}
         />

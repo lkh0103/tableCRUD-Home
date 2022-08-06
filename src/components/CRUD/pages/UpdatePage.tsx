@@ -7,23 +7,29 @@ import Toast from '../partials/Toast'
 
 export default function UpdatePage(props: any) {
 
-  const { data, updateData } = useCRUD();
+  const { data, updateData, deleteData } = useCRUD();
 
   const updateDataUser = (dataInput: any) => {
     updateData(dataInput);
   };
+  // console.log(props.dataEdit);
 
-  console.log(props.dataEdit);
+  const getReturnDeleteAPI = (id: string) => {
+    deleteData(id)
+  }
 
   return (
     <div>
-      {/* <Title /> */}
-      <FormCRUD
-        title={Object.keys(data[0])}
-        data={props.dataEdit.rows}
-        updateUser={updateDataUser}
-      />
-      {/* <Toast/> */}
+      {props.schemaForm ? (
+        <FormShema propsFormSchema={props.schemaForm} />
+      ) : (
+        <FormCRUD
+          data={props.dataEdit.rows}
+          title={Object.keys(data[0])}
+          updateUser={updateDataUser}
+          delUser={getReturnDeleteAPI}
+        />
+      )}
     </div>
   );
 }
