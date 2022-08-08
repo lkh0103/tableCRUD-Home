@@ -2,6 +2,7 @@ import React from "react";
 import { useCRUD } from "../hooks/CRUDProvider";
 import FormCRUD from "../partials/Form/Form";
 import FormShema from "../partials/Form/FormSchema";
+import Title from "../partials/Title";
 import Toast from "../partials/Toast";
 
 export default function CreatePage(props: any) {
@@ -14,6 +15,7 @@ export default function CreatePage(props: any) {
 
   return (
     <div>
+      <Title /><br />
       {props.schemaForm ? (
         <FormShema propsFormSchema={props.schemaForm} />
       ) : (

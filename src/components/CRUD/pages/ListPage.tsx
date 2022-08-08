@@ -5,6 +5,7 @@ import { useCRUD } from '../hooks/CRUDProvider'
 import CURDPagiantion from '../partials/Pagination'
 import CRUDSearch from '../partials/Search'
 import { CRUDTable } from '../partials/Table'
+import Title from '../partials/Title'
 
 export default function ListPage() {
   const { columns, loadData, pagination, params, setParams, data } = useCRUD();
@@ -32,6 +33,7 @@ export default function ListPage() {
 
   return (
     <div>
+      <Title /><br />
       <Button style={{ float: 'right' }}>
         <Link to="/demo/create">Create User</Link>
       </Button><br /><br /><br />

@@ -3,6 +3,7 @@ import { useCRUD } from '../hooks/CRUDProvider'
 import FormCRUD from '../partials/Form/Form'
 import FormShema from '../partials/Form/FormSchema'
 import ModalCRUD from '../partials/Modal'
+import Title from '../partials/Title'
 import Toast from '../partials/Toast'
 
 export default function UpdatePage(props: any) {
@@ -20,6 +21,7 @@ export default function UpdatePage(props: any) {
 
   return (
     <div>
+      <Title /><br />
       {props.schemaForm ? (
         <FormShema propsFormSchema={props.schemaForm} />
       ) : (
@@ -30,6 +32,10 @@ export default function UpdatePage(props: any) {
           delUser={getReturnDeleteAPI}
         />
       )}
+      <ModalCRUD
+        data={props.dataEdit.rows}
+        delData={getReturnDeleteAPI}
+      />
     </div>
   );
 }
