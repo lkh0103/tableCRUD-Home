@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Pagination } from "antd";
 
 export default function CURDPagiantion(props: any) {
@@ -7,7 +7,7 @@ export default function CURDPagiantion(props: any) {
       defaultCurrent={props.defaultCurrent}
       total={props.total}
       pageSize={props.pageSize}
-      onChange={(e) => props.onPageChange(e)}
+      onChange={(page, pageSize) => props.onPageChange(page, pageSize)}
     />
   );
 }

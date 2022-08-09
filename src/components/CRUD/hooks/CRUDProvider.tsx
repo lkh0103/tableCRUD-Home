@@ -25,7 +25,7 @@ export default function CRUDProvider(props: PropsWithChildren<CRUDProps>) {
     const [data, setData] = useState<any>();
     const [params, setParams] = useState<any>({
         page: 1,
-        limit: 4,
+        limit: 5,
     });
     const [pagination, setPagination] = useState<any>({});
 

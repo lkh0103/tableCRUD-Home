@@ -13,11 +13,12 @@ export default function ListPage() {
 
   useEffect(loadData, [params]);
 
-  const onPageChange = (page: number) => {
+  const onPageChange = (page: number, pageSize: number) => {
     setSearchParams({ searchPage: String(page) })
     setParams({
       ...params,
       page,
+      limit: pageSize
     });
   };
 
@@ -42,8 +43,8 @@ export default function ListPage() {
       {pagination.total > 0 && (
         <CURDPagiantion
           defaultCurrent={pagination.page}
-          total={pagination.total}
-          pageSize={pagination.total / pagination.totalPages}
+          pageSize={pagination.total}
+          total={pagination.total * pagination.totalPages}
           onPageChange={onPageChange}
         />
       )}

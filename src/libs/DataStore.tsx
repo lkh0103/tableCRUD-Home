@@ -31,12 +31,12 @@ export const list = (params: any) => {
 
     let repo = ALL_USERS
     if (search) {
-        repo = repo.filter(item => item.username === search)
+        repo = repo.filter(item => item.username.includes(search))
     }
 
     const skip = (page - 1) * limit // = 0 
     const totalPages = Math.ceil(repo.length / limit) // = 10
-    const result: any[] = repo.slice(skip, skip + limit - 1) // = (0, 0 + 10 -1)
+    const result: any[] = repo.slice(skip, skip + limit) // = (0, 0 + 10)
 
     return {
         rows: result,
